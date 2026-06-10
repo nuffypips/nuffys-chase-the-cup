@@ -124,7 +124,7 @@
   .toggle-group {
     display: flex;
     justify-content: center;
-    gap: 40px;
+    gap: 15px;
     margin: 30px 0;
     flex-wrap: wrap;
   }
@@ -134,6 +134,7 @@
     padding: 15px 25px;
     border: 1px solid rgba(255,255,255,0.05);
     border-radius: 6px;
+    flex: 1 1 220px;
     min-width: 220px;
   }
 
@@ -212,7 +213,28 @@
   </header>
 
   <div class="lobby-panel">
-    <h2 style="font-family: 'Impact', sans-serif; font-size: 32px; letter-spacing: 0.05em; margin-bottom: 20px;">Email from the Owner</h2>
+    <h2 style="font-family: 'Impact', sans-serif; font-size: 32px; letter-spacing: 0.05em; margin-bottom: 20px;">GM Inbox</h2>
+
+    <div style="background: #0d1a27; border: 1px solid #2a3f55; border-radius: 6px; margin-bottom: 14px; overflow: hidden;">
+      <div onclick="togglePatchNotes()" style="cursor: pointer; background: #0a1520; padding: 12px 18px; display: flex; align-items: center; gap: 12px;">
+        <span id="patch-dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--gold-glow); flex: 0 0 auto;"></span>
+        <div style="flex: 1; text-align: left; min-width: 0;">
+          <div style="font-size: 11px; color: #6a8ba5;"><span style="color: #4a7a9b; font-weight: bold;">From:</span> &nbsp;League Office &lt;updates@nuffypips.com&gt;</div>
+          <div style="font-size: 12px; color: var(--ice); font-weight: bold; margin-top: 2px;">League Update — Patch Notes
+            <span id="patch-new" style="background: var(--gold-glow); color: #0a1520; font-size: 9px; padding: 1px 6px; border-radius: 3px; letter-spacing: .08em; vertical-align: middle;">NEW</span>
+          </div>
+        </div>
+        <span id="patch-chevron" style="color: #4a7a9b; font-size: 14px; flex: 0 0 auto;">▾</span>
+      </div>
+      <div id="patch-body" style="display: none; padding: 16px 18px; font-size: 12px; color: #a9c2d6; line-height: 1.8; text-align: left; border-top: 1px solid #1a2f42;">
+        <p style="margin-bottom: 10px;">GM — the league pushed some changes overnight. Highlights:</p>
+        &bull; Scouting database expanded to <strong style="color: var(--ice);">134 franchises</strong> — 40 new teams added, from the 1930 Bruins to the 2025 Jets. Every NHL franchise is now represented.<br>
+        &bull; New <strong style="color: var(--ice);">RETRO MODE</strong> — 16-bit skin, chiptune sounds, and a team pool straight out of 1994.<br>
+        &bull; Scoring engine tightened for realism: <strong style="color: var(--ice);">two-way discipline</strong> is now era-adjusted and pro-rated for shortened seasons, and a cross-era scoring bug was fixed.<br>
+        &bull; Front office cleaned up the lobby and put the tip jar where people can find it.
+        <p style="margin-top: 12px; font-size: 11px; color: #4a7a9b;">— League Operations</p>
+      </div>
+    </div>
 
     <div style="background: #0d1a27; border: 1px solid #2a3f55; border-radius: 6px; margin-bottom: 30px; font-size: 14px; line-height: 1.6; overflow: hidden;">
       <div style="background: #0a1520; border-bottom: 1px solid #2a3f55; padding: 12px 18px; display: flex; flex-direction: column; gap: 3px;">
@@ -249,18 +271,16 @@
       </div>
 
       <div class="toggle-box" onclick="toggleNHL94()" style="cursor: pointer;">
-        <div class="toggle-label">NHL '94 Mode</div>
+        <div class="toggle-label">Retro Mode</div>
         <div id="nhl94-text" class="mode-status" style="color: #6a8ba5;">OFF</div>
         <div style="font-size: 11px; color: #6a8ba5; margin-top: 8px; line-height: 1.3;">
-          Retro skin, 8-bit sounds, and only teams from 1994 and earlier. Overrides the era constraint.
+          16-bit skin, chiptune sounds, and only teams from 1994 and earlier. Overrides the era constraint.
         </div>
       </div>
     </div>
 
-    <div style="display:flex;gap:10px;margin-top:0;">
-      <button class="start-btn" onclick="renderLeaderboard()" style="flex:0 0 auto;padding-left:18px;padding-right:18px;background:transparent;border:2px solid #2a3f55;color:#6a8ba5;box-shadow:none;font-size:12px;">📋 LEADERBOARD</button>
-      <button class="start-btn" onclick="startDraft()" style="flex:1;">Enter the Draft</button>
-    </div>
+    <button class="start-btn" onclick="renderLeaderboard()" style="display:block;width:100%;margin-top:0;background:var(--steel-dark);border:1px solid rgba(255,255,255,0.05);color:#8aa8c0;box-shadow:none;">📋 Leaderboard</button>
+    <button class="start-btn" onclick="startDraft()" style="display:block;width:100%;margin-top:12px;">Enter the Draft</button>
   </div>
 </div>
 
@@ -2532,6 +2552,24 @@
   };
 
   // 2. LAUNCHPAD TOGGLES
+  // ── PATCH NOTES EMAIL ─────────────────────────────────────────────
+  // Bump this when the patch-notes email content changes so the NEW badge reappears
+  const PATCH_VERSION = '2026-06-10';
+  function markPatchSeenUI() {
+    let d = document.getElementById('patch-dot'); if (d) d.style.background = '#2a3f55';
+    let n = document.getElementById('patch-new'); if (n) n.style.display = 'none';
+  }
+  function togglePatchNotes() {
+    let body = document.getElementById('patch-body');
+    let open = body.style.display === 'none';
+    body.style.display = open ? 'block' : 'none';
+    document.getElementById('patch-chevron').textContent = open ? '▴' : '▾';
+    if (open) {
+      try { localStorage.setItem('ncp_patchSeen', PATCH_VERSION); } catch(e) {}
+      markPatchSeenUI();
+    }
+  }
+
   // ── NHL '94 MODE ──────────────────────────────────────────────────
   function isNHL94() {
     try { return localStorage.getItem('ncp_nhl94') === '1'; } catch(e) { return false; }
@@ -3153,17 +3191,24 @@
     let offScore = Math.min(20, Math.max(0, (fTotal/9)*16 + Math.max(0,(1-fStdDev/2.5)*4)));
 
     // — Two-Way Discipline (0–15) —
+    // Plus-minus is pro-rated for shortened seasons and scaled by era scoring
+    // environment (same philosophy as the WAR engine), then graded against the
+    // real distribution: median skater is ~+14, an elite two-way roster averages ~+30.
     let skaterSlots = ['F1','F2','F3','D1','D2','FLEX'];
     let totalPM = 0, skaterCount = 0, pimDed = 0;
     skaterSlots.forEach(sl => {
       let p = r[sl];
       if (p && p.pos !== 'G') {
-        totalPM += p.stats.pm; skaterCount++;
+        let proRate = 82 / (p.seasonGP || 82);
+        let eraScale = getEraFactors(p.era).scoring;
+        totalPM += p.stats.pm * proRate * eraScale;
+        skaterCount++;
         if (p.stats.pim > 120 && (p.rank === 'Legend' || p.rank === 'HOF')) pimDed += 1.5;
       }
     });
     let avgPM = skaterCount > 0 ? totalPM / skaterCount : 0;
-    let disciplineScore = Math.min(15, Math.max(0, ((avgPM + 8) / 55) * 13 - pimDed));
+    // 15/15 at an adjusted average of +30, 0/15 at -5
+    let disciplineScore = Math.min(15, Math.max(0, ((avgPM + 5) / 35) * 15 - pimDed));
 
     // — Roster Construction (0–15) —
     let cScore = 0;
@@ -3619,8 +3664,11 @@
     });
   }
 
-  // Restore NHL '94 mode from previous session (game uses location.reload between drafts)
+  // Restore retro mode from previous session (game uses location.reload between drafts)
   applyNHL94(isNHL94());
+
+  // Dim the patch-notes NEW badge if this version was already opened
+  try { if (localStorage.getItem('ncp_patchSeen') === PATCH_VERSION) markPatchSeenUI(); } catch(e) {}
 
 </script>
 </body>
