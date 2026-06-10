@@ -228,10 +228,12 @@
       </div>
       <div id="patch-body" style="display: none; padding: 16px 18px; font-size: 12px; color: #a9c2d6; line-height: 1.8; text-align: left; border-top: 1px solid #1a2f42;">
         <p style="margin-bottom: 10px;">GM — the league pushed some changes overnight. Highlights:</p>
-        &bull; Scouting database expanded to <strong style="color: var(--ice);">134 franchises</strong> — 40 new teams added, from the 1930 Bruins to the 2025 Jets. Every NHL franchise is now represented.<br>
+        &bull; Scouting database expanded to <strong style="color: var(--ice);">141 franchises</strong> — 47 new teams added, from the 1930 Bruins to the 2025 Jets. Every NHL franchise is now represented.<br>
+        &bull; The 1990s Senators have been <strong style="color: var(--ice);">demoted to the minors</strong>. The 113-point 2003 Presidents' Trophy Senators were called up to replace them. Also new: '99 Coyotes, '10 Sharks, '02 Leafs, '92 Blackhawks, '00 Blues, '80 Flyers, and the Mario comeback '01 Penguins.<br>
         &bull; New <strong style="color: var(--ice);">RETRO MODE</strong> — 16-bit skin, chiptune sounds, and a team pool straight out of 1994.<br>
         &bull; Scoring engine tightened for realism: <strong style="color: var(--ice);">two-way discipline</strong> is now era-adjusted and pro-rated for shortened seasons, and a cross-era scoring bug was fixed.<br>
-        &bull; Front office cleaned up the lobby and put the tip jar where people can find it.
+        &bull; Front office cleaned up the lobby and put the tip jar where people can find it.<br>
+        &bull; <strong style="color: var(--ice);">Balance patch:</strong> the two-way discipline curve was tightened after GMs cracked it on day one, and five mis-ranked stars (including a certain Core-tier Patrick Roy) were re-tiered to their proper ranks. Scores posted before this patch ran a touch hot.
         <p style="margin-top: 12px; font-size: 11px; color: #4a7a9b;">— League Operations</p>
       </div>
     </div>
@@ -342,7 +344,7 @@
         { name: 'Paul Coffey',    pos: 'LD', rank: 'All-Star', g: 14, a: 40,  pts: 54,  pm: 19,  pim: 56,  save: 0 },
         { name: 'Vladimir Konstantinov',pos: 'RD', rank: 'All-Star',g: 12,a: 22,pts: 34, pm: 60,  pim: 139, save: 0 },
         { name: 'Igor Larionov',  pos: 'C',  rank: 'Core',     g: 4,  a: 17,  pts: 21,  pm: 11,  pim: 16,  save: 0 },
-        { name: 'Dino Ciccarelli',pos: 'RW', rank: 'Core',     g: 22, a: 21,  pts: 43,  pm: 13,  pim: 48,  save: 0 },
+        { name: 'Dino Ciccarelli',pos: 'RW', rank: 'All-Star',     g: 22, a: 21,  pts: 43,  pm: 13,  pim: 48,  save: 0 },
         { name: 'Kris Draper',    pos: 'C',  rank: 'Core',     g: 7,  a: 9,   pts: 16,  pm: 15,  pim: 32,  save: 0 },
         { name: 'Viacheslav Fetisov',pos: 'RD', rank: 'Core',  g: 2,  a: 12,  pts: 14,  pm: 37,  pim: 48,  save: 0 },
         { name: 'Chris Osgood',   pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 4,   save: 91.1 },
@@ -359,7 +361,7 @@
         { name: 'Alexander Mogilny',pos: 'RW', rank: 'All-Star', g: 43, a: 40, pts: 83,  pm: 10,  pim: 42,  save: 0 },
         { name: 'Brian Rafalski', pos: 'RD', rank: 'All-Star', g: 9,  a: 43,  pts: 52,  pm: 36,  pim: 22,  save: 0 },
         { name: 'Jason Arnott',   pos: 'C',  rank: 'Core',     g: 22, a: 33,  pts: 55,  pm: 12,  pim: 102, save: 0 },
-        { name: 'Petr Sykora',    pos: 'RW', rank: 'Core',     g: 35, a: 46,  pts: 81,  pm: 15,  pim: 32,  save: 0 },
+        { name: 'Petr Sykora',    pos: 'RW', rank: 'All-Star',     g: 35, a: 46,  pts: 81,  pm: 15,  pim: 32,  save: 0 },
         { name: 'John Madden',    pos: 'C',  rank: 'Core',     g: 16, a: 9,   pts: 25,  pm: 24,  pim: 20,  save: 0 },
         { name: 'Colin White',    pos: 'RD', rank: 'Core',     g: 1,  a: 19,  pts: 20,  pm: 21,  pim: 155, save: 0 },
         { name: 'Sergei Brylin',  pos: 'LW', rank: 'Core',     g: 23, a: 29,  pts: 52,  pm: 25,  pim: 24,  save: 0 },
@@ -367,20 +369,20 @@
       ]
     },
     {
-      era: '1990s', name: 'Senators',
+      era: '2003', name: 'Senators',
       players: [
-        { name: 'Alexei Yashin',     pos: 'C',  rank: 'All-Star', g: 34, a: 44, pts: 78, pm: -10, pim: 32,  save: 0 },
-        { name: 'Sylvain Turgeon',   pos: 'LW', rank: 'Core',     g: 22, a: 18, pts: 40, pm: -14, pim: 38,  save: 0 },
-        { name: 'Bob Kudelski',      pos: 'RW', rank: 'Core',     g: 18, a: 14, pts: 32, pm: -12, pim: 24,  save: 0 },
-        { name: 'Norm Maciver',      pos: 'LD', rank: 'Core',     g: 8,  a: 28, pts: 36, pm: -12, pim: 38,  save: 0 },
-        { name: 'Brad Shaw',         pos: 'RD', rank: 'Core',     g: 4,  a: 18, pts: 22, pm: -14, pim: 28,  save: 0 },
-        { name: 'Randy Cunneyworth', pos: 'LW', rank: 'Core',     g: 12, a: 14, pts: 26, pm: -16, pim: 62,  save: 0 },
-        { name: 'Darcy Loewen',      pos: 'LW', rank: 'Core',     g: 6,  a: 8,  pts: 14, pm: -18, pim: 118, save: 0 },
-        { name: 'Mark Lamb',         pos: 'C',  rank: 'Core',     g: 11, a: 18, pts: 29, pm: -21, pim: 56,  save: 0 },
-        { name: 'Brad Marsh',        pos: 'LD', rank: 'Core',     g: 0,  a: 5,  pts: 5,  pm: -18, pim: 64,  save: 0 },
-        { name: 'Chris Luongo',      pos: 'RD', rank: 'Core',     g: 3,  a: 9,  pts: 12, pm: -15, pim: 40,  save: 0 },
-        { name: 'Peter Sidorkiewicz',pos: 'G',  rank: 'Core',     g: 0,  a: 0,  pts: 0,  pm: 0,   pim: 4,   save: 87.6 },
-        { name: 'Craig Billington',  pos: 'G',  rank: 'Core',     g: 0,  a: 0,  pts: 0,  pm: 0,   pim: 2,   save: 88.0 }
+        { name: 'Marian Hossa',      pos: 'RW', rank: 'HOF',      g: 45, a: 35, pts: 80, pm: 8,   pim: 34,  save: 0 },
+        { name: 'Daniel Alfredsson', pos: 'RW', rank: 'HOF',      g: 27, a: 51, pts: 78, pm: 15,  pim: 42,  save: 0 },
+        { name: 'Martin Havlat',     pos: 'LW', rank: 'All-Star', g: 24, a: 35, pts: 59, pm: 20,  pim: 30,  save: 0 },
+        { name: 'Todd White',        pos: 'C',  rank: 'Core',     g: 25, a: 35, pts: 60, pm: 19,  pim: 12,  save: 0 },
+        { name: 'Radek Bonk',        pos: 'C',  rank: 'Core',     g: 22, a: 32, pts: 54, pm: 6,   pim: 36,  save: 0 },
+        { name: 'Wade Redden',       pos: 'LD', rank: 'All-Star', g: 10, a: 35, pts: 45, pm: 23,  pim: 70,  save: 0 },
+        { name: 'Zdeno Chara',       pos: 'RD', rank: 'All-Star', g: 9,  a: 30, pts: 39, pm: 29,  pim: 116, save: 0 },
+        { name: 'Mike Fisher',       pos: 'C',  rank: 'Core',     g: 18, a: 20, pts: 38, pm: 13,  pim: 54,  save: 0 },
+        { name: 'Magnus Arvedson',   pos: 'LW', rank: 'Core',     g: 16, a: 21, pts: 37, pm: 13,  pim: 28,  save: 0 },
+        { name: 'Chris Phillips',    pos: 'LD', rank: 'Core',     g: 3,  a: 16, pts: 19, pm: 7,   pim: 71,  save: 0 },
+        { name: 'Patrick Lalime',    pos: 'G',  rank: 'All-Star', g: 0,  a: 0,  pts: 0,  pm: 0,   pim: 4,   save: 91.1 },
+        { name: 'Martin Prusek',     pos: 'G',  rank: 'Core',     g: 0,  a: 0,  pts: 0,  pm: 0,   pim: 0,   save: 90.9 }
       ]
     },
     {
@@ -396,7 +398,7 @@
         { name: 'Bob Gainey',     pos: 'LW', rank: 'Core',     g: 14, a: 19,  pts: 33,  pm: 25,  pim: 41,  save: 0 },
         { name: 'Doug Jarvis',    pos: 'C',  rank: 'Core',     g: 16, a: 22,  pts: 38,  pm: 22,  pim: 10,  save: 0 },
         { name: 'Doug Risebrough',pos: 'C',  rank: 'Core',     g: 15, a: 21,  pts: 36,  pm: 19,  pim: 114, save: 0 },
-        { name: 'Ken Dryden',     pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 92.1 },
+        { name: 'Ken Dryden',     pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 92.1 },
         { name: 'Michel Larocque',pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 2,   save: 90.8 }
       ]
     },
@@ -413,7 +415,7 @@
         { name: 'Scott Young',    pos: 'RW', rank: 'Core',     g: 21, a: 39,  pts: 60,  pm: 2,   pim: 50,  save: 0 },
         { name: 'Alexei Gusarov', pos: 'LD', rank: 'Core',     g: 5,  a: 15,  pts: 20,  pm: 16,  pim: 18,  save: 0 },
         { name: 'Curtis Leschyshyn',pos:'RD', rank: 'Core',    g: 4,  a: 15,  pts: 19,  pm: 18,  pim: 73,  save: 0 },
-        { name: 'Patrick Roy',    pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 8,   save: 90.9 },
+        { name: 'Patrick Roy',    pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 8,   save: 90.9 },
         { name: 'Stephane Fiset', pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 89.4 }
       ]
     },
@@ -1250,7 +1252,7 @@
         { name: 'Doc Romnes',       pos: 'C',  rank: 'Core',     g: 8,  a: 16,  pts: 24,  pm: 8,   pim: 20,  save: 0 },
         { name: 'Roger Jenkins',    pos: 'LD', rank: 'Core',     g: 2,  a: 8,   pts: 10,  pm: 6,   pim: 42,  save: 0 },
         { name: 'Leroy Goldsworthy',pos: 'RW', rank: 'Core',     g: 9,  a: 8,   pts: 17,  pm: 4,   pim: 30,  save: 0 },
-        { name: 'Lorne Chabot',     pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 90.2 }
+        { name: 'Lorne Chabot',     pos: 'G',  rank: 'All-Star',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 90.2 }
       ]
     },
     {
@@ -2513,6 +2515,118 @@
         { name: 'Dylan DeMelo',      pos: 'RD', rank: 'Core',     g: 3,  a: 25,  pts: 28,  pm: 18,  pim: 24,  save: 0 },
         { name: 'Eric Comrie',       pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 90.0 }
       ]
+    },
+    {
+      era: '1999', name: 'Coyotes',
+      players: [
+        { name: 'Keith Tkachuk',     pos: 'LW', rank: 'HOF',      g: 36, a: 32,  pts: 68,  pm: 3,   pim: 151, save: 0 },
+        { name: 'Jeremy Roenick',    pos: 'C',  rank: 'HOF',      g: 24, a: 48,  pts: 72,  pm: 7,   pim: 130, save: 0 },
+        { name: 'Rick Tocchet',      pos: 'RW', rank: 'All-Star', g: 26, a: 30,  pts: 56,  pm: 6,   pim: 147, save: 0 },
+        { name: 'Robert Reichel',    pos: 'C',  rank: 'All-Star', g: 19, a: 44,  pts: 63,  pm: 10,  pim: 32,  save: 0 },
+        { name: 'Shane Doan',        pos: 'RW', rank: 'Core',     g: 6,  a: 16,  pts: 22,  pm: 4,   pim: 54,  save: 0 },
+        { name: 'Juha Ylonen',       pos: 'C',  rank: 'Core',     g: 11, a: 24,  pts: 35,  pm: 2,   pim: 18,  save: 0 },
+        { name: 'Teppo Numminen',    pos: 'RD', rank: 'All-Star', g: 10, a: 30,  pts: 40,  pm: 16,  pim: 30,  save: 0 },
+        { name: 'Oleg Tverdovsky',   pos: 'LD', rank: 'Core',     g: 7,  a: 18,  pts: 25,  pm: 6,   pim: 26,  save: 0 },
+        { name: 'Jyrki Lumme',       pos: 'LD', rank: 'Core',     g: 8,  a: 20,  pts: 28,  pm: 5,   pim: 34,  save: 0 },
+        { name: 'Nikolai Khabibulin',pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 6,   save: 92.3 },
+        { name: 'Jimmy Waite',       pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 90.0 }
+      ]
+    },
+    {
+      era: '2010', name: 'Sharks',
+      players: [
+        { name: 'Joe Thornton',      pos: 'C',  rank: 'HOF',      g: 20, a: 69,  pts: 89,  pm: 17,  pim: 54,  save: 0 },
+        { name: 'Patrick Marleau',   pos: 'LW', rank: 'HOF',      g: 44, a: 39,  pts: 83,  pm: 21,  pim: 22,  save: 0 },
+        { name: 'Dany Heatley',      pos: 'LW', rank: 'All-Star', g: 39, a: 43,  pts: 82,  pm: 12,  pim: 54,  save: 0 },
+        { name: 'Joe Pavelski',      pos: 'C',  rank: 'All-Star', g: 25, a: 26,  pts: 51,  pm: 8,   pim: 18,  save: 0 },
+        { name: 'Ryane Clowe',       pos: 'LW', rank: 'Core',     g: 19, a: 38,  pts: 57,  pm: 4,   pim: 131, save: 0 },
+        { name: 'Devin Setoguchi',   pos: 'RW', rank: 'Core',     g: 20, a: 16,  pts: 36,  pm: 6,   pim: 16,  save: 0 },
+        { name: 'Dan Boyle',         pos: 'RD', rank: 'All-Star', g: 16, a: 42,  pts: 58,  pm: 8,   pim: 60,  save: 0 },
+        { name: 'Marc-Edouard Vlasic',pos:'LD', rank: 'Core',     g: 3,  a: 25,  pts: 28,  pm: 12,  pim: 22,  save: 0 },
+        { name: 'Rob Blake',         pos: 'RD', rank: 'Core',     g: 7,  a: 23,  pts: 30,  pm: 10,  pim: 60,  save: 0 },
+        { name: 'Evgeni Nabokov',    pos: 'G',  rank: 'All-Star', g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 4,   save: 92.2 },
+        { name: 'Thomas Greiss',     pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 90.0 }
+      ]
+    },
+    {
+      era: '2002', name: 'Maple Leafs',
+      players: [
+        { name: 'Mats Sundin',       pos: 'C',  rank: 'HOF',      g: 41, a: 39,  pts: 80,  pm: 6,   pim: 94,  save: 0 },
+        { name: 'Alexander Mogilny', pos: 'RW', rank: 'All-Star', g: 24, a: 33,  pts: 57,  pm: 1,   pim: 8,   save: 0 },
+        { name: 'Gary Roberts',      pos: 'LW', rank: 'All-Star', g: 21, a: 27,  pts: 48,  pm: 4,   pim: 90,  save: 0 },
+        { name: 'Darcy Tucker',      pos: 'LW', rank: 'Core',     g: 24, a: 35,  pts: 59,  pm: 24,  pim: 92,  save: 0 },
+        { name: 'Mikael Renberg',    pos: 'RW', rank: 'Core',     g: 14, a: 24,  pts: 38,  pm: 7,   pim: 16,  save: 0 },
+        { name: 'Alyn McCauley',     pos: 'C',  rank: 'Core',     g: 6,  a: 10,  pts: 16,  pm: 2,   pim: 6,   save: 0 },
+        { name: 'Bryan McCabe',      pos: 'LD', rank: 'All-Star', g: 17, a: 26,  pts: 43,  pm: 16,  pim: 129, save: 0 },
+        { name: 'Tomas Kaberle',     pos: 'RD', rank: 'All-Star', g: 10, a: 29,  pts: 39,  pm: 5,   pim: 24,  save: 0 },
+        { name: 'Shayne Corson',     pos: 'LW', rank: 'Core',     g: 12, a: 21,  pts: 33,  pm: 1,   pim: 120, save: 0 },
+        { name: 'Curtis Joseph',     pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 14,  save: 90.6 },
+        { name: 'Corey Schwab',      pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 90.0 }
+      ]
+    },
+    {
+      era: '1992', name: 'Blackhawks',
+      players: [
+        { name: 'Jeremy Roenick',    pos: 'C',  rank: 'HOF',      g: 53, a: 50,  pts: 103, pm: 23,  pim: 98,  save: 0 },
+        { name: 'Steve Larmer',      pos: 'RW', rank: 'All-Star', g: 29, a: 45,  pts: 74,  pm: 28,  pim: 65,  save: 0 },
+        { name: 'Chris Chelios',     pos: 'LD', rank: 'HOF',      g: 9,  a: 47,  pts: 56,  pm: 24,  pim: 245, save: 0 },
+        { name: 'Michel Goulet',     pos: 'LW', rank: 'All-Star', g: 22, a: 41,  pts: 63,  pm: 14,  pim: 30,  save: 0 },
+        { name: 'Dirk Graham',       pos: 'RW', rank: 'Core',     g: 17, a: 30,  pts: 47,  pm: 12,  pim: 89,  save: 0 },
+        { name: 'Brent Sutter',      pos: 'C',  rank: 'Core',     g: 18, a: 22,  pts: 40,  pm: 10,  pim: 30,  save: 0 },
+        { name: 'Steve Smith',       pos: 'LD', rank: 'All-Star', g: 9,  a: 21,  pts: 30,  pm: 16,  pim: 200, save: 0 },
+        { name: 'Igor Kravchuk',     pos: 'RD', rank: 'Core',     g: 8,  a: 12,  pts: 20,  pm: 6,   pim: 30,  save: 0 },
+        { name: 'Frantisek Kucera',  pos: 'RD', rank: 'Core',     g: 3,  a: 10,  pts: 13,  pm: 5,   pim: 36,  save: 0 },
+        { name: 'Ed Belfour',        pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 20,  save: 89.4 },
+        { name: 'Dominik Hasek',     pos: 'G',  rank: 'All-Star', g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 4,   save: 89.3 }
+      ]
+    },
+    {
+      era: '2000', name: 'Blues',
+      players: [
+        { name: 'Chris Pronger',     pos: 'LD', rank: 'HOF',      g: 14, a: 48,  pts: 62,  pm: 52,  pim: 92,  save: 0 },
+        { name: 'Al MacInnis',       pos: 'RD', rank: 'HOF',      g: 11, a: 28,  pts: 39,  pm: 20,  pim: 34,  save: 0 },
+        { name: 'Pavol Demitra',     pos: 'LW', rank: 'All-Star', g: 28, a: 47,  pts: 75,  pm: 34,  pim: 8,   save: 0 },
+        { name: 'Pierre Turgeon',    pos: 'C',  rank: 'All-Star', g: 26, a: 40,  pts: 66,  pm: 30,  pim: 8,   save: 0 },
+        { name: 'Michal Handzus',    pos: 'C',  rank: 'Core',     g: 25, a: 28,  pts: 53,  pm: 19,  pim: 44,  save: 0 },
+        { name: 'Scott Young',       pos: 'RW', rank: 'Core',     g: 24, a: 15,  pts: 39,  pm: 12,  pim: 18,  save: 0 },
+        { name: 'Jochen Hecht',      pos: 'LW', rank: 'Core',     g: 13, a: 21,  pts: 34,  pm: 20,  pim: 28,  save: 0 },
+        { name: 'Lubos Bartecko',    pos: 'LW', rank: 'Core',     g: 16, a: 23,  pts: 39,  pm: 17,  pim: 14,  save: 0 },
+        { name: 'Marc Bergevin',     pos: 'LD', rank: 'Core',     g: 1,  a: 8,   pts: 9,   pm: 8,   pim: 75,  save: 0 },
+        { name: 'Roman Turek',       pos: 'G',  rank: 'All-Star', g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 2,   save: 91.2 },
+        { name: 'Brent Johnson',     pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 90.2 }
+      ]
+    },
+    {
+      era: '1980', name: 'Flyers',
+      players: [
+        { name: 'Bobby Clarke',      pos: 'C',  rank: 'HOF',      g: 12, a: 57,  pts: 69,  pm: 32,  pim: 65,  save: 0 },
+        { name: 'Bill Barber',       pos: 'LW', rank: 'HOF',      g: 40, a: 32,  pts: 72,  pm: 28,  pim: 17,  save: 0 },
+        { name: 'Reggie Leach',      pos: 'RW', rank: 'All-Star', g: 50, a: 26,  pts: 76,  pm: 24,  pim: 28,  save: 0 },
+        { name: 'Brian Propp',       pos: 'LW', rank: 'All-Star', g: 34, a: 41,  pts: 75,  pm: 25,  pim: 54,  save: 0 },
+        { name: 'Rick MacLeish',     pos: 'C',  rank: 'Core',     g: 31, a: 35,  pts: 66,  pm: 14,  pim: 28,  save: 0 },
+        { name: 'Paul Holmgren',     pos: 'RW', rank: 'Core',     g: 30, a: 35,  pts: 65,  pm: 16,  pim: 267, save: 0 },
+        { name: 'Bob Dailey',        pos: 'RD', rank: 'All-Star', g: 13, a: 26,  pts: 39,  pm: 21,  pim: 71,  save: 0 },
+        { name: 'Behn Wilson',       pos: 'LD', rank: 'Core',     g: 9,  a: 25,  pts: 34,  pm: 18,  pim: 212, save: 0 },
+        { name: 'Jimmy Watson',      pos: 'LD', rank: 'Core',     g: 5,  a: 18,  pts: 23,  pm: 20,  pim: 44,  save: 0 },
+        { name: 'Pete Peeters',      pos: 'G',  rank: 'All-Star', g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 8,   save: 89.0 },
+        { name: 'Phil Myre',         pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 2,   save: 87.5 }
+      ]
+    },
+    {
+      era: '2001', name: 'Penguins',
+      players: [
+        { name: 'Mario Lemieux',     pos: 'C',  rank: 'Legend',   g: 35, a: 41,  pts: 76,  pm: 15,  pim: 18,  save: 0 },
+        { name: 'Jaromir Jagr',      pos: 'RW', rank: 'HOF',      g: 52, a: 69,  pts: 121, pm: 19,  pim: 42,  save: 0 },
+        { name: 'Alexei Kovalev',    pos: 'RW', rank: 'All-Star', g: 44, a: 51,  pts: 95,  pm: 12,  pim: 96,  save: 0 },
+        { name: 'Martin Straka',     pos: 'LW', rank: 'All-Star', g: 27, a: 68,  pts: 95,  pm: 19,  pim: 38,  save: 0 },
+        { name: 'Robert Lang',       pos: 'C',  rank: 'Core',     g: 32, a: 48,  pts: 80,  pm: 14,  pim: 28,  save: 0 },
+        { name: 'Kevin Stevens',     pos: 'LW', rank: 'Core',     g: 8,  a: 15,  pts: 23,  pm: 2,   pim: 86,  save: 0 },
+        { name: 'Darius Kasparaitis',pos: 'LD', rank: 'Core',     g: 3,  a: 16,  pts: 19,  pm: 11,  pim: 111, save: 0 },
+        { name: 'Janne Laukkanen',   pos: 'LD', rank: 'Core',     g: 2,  a: 14,  pts: 16,  pm: 6,   pim: 50,  save: 0 },
+        { name: 'Michal Rozsival',   pos: 'RD', rank: 'Core',     g: 4,  a: 12,  pts: 16,  pm: 9,   pim: 38,  save: 0 },
+        { name: 'Johan Hedberg',     pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 2,   save: 90.7 },
+        { name: 'Jean-Sebastien Aubin',pos:'G', rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 89.0 }
+      ]
     }
   ];
 
@@ -2554,7 +2668,7 @@
   // 2. LAUNCHPAD TOGGLES
   // ── PATCH NOTES EMAIL ─────────────────────────────────────────────
   // Bump this when the patch-notes email content changes so the NEW badge reappears
-  const PATCH_VERSION = '2026-06-10';
+  const PATCH_VERSION = '2026-06-10c';
   function markPatchSeenUI() {
     let d = document.getElementById('patch-dot'); if (d) d.style.background = '#2a3f55';
     let n = document.getElementById('patch-new'); if (n) n.style.display = 'none';
@@ -3193,7 +3307,7 @@
     // — Two-Way Discipline (0–15) —
     // Plus-minus is pro-rated for shortened seasons and scaled by era scoring
     // environment (same philosophy as the WAR engine), then graded against the
-    // real distribution: median skater is ~+14, an elite two-way roster averages ~+30.
+    // real distribution: median skater is ~+14; 15/15 demands a deliberate +35 average.
     let skaterSlots = ['F1','F2','F3','D1','D2','FLEX'];
     let totalPM = 0, skaterCount = 0, pimDed = 0;
     skaterSlots.forEach(sl => {
@@ -3207,8 +3321,8 @@
       }
     });
     let avgPM = skaterCount > 0 ? totalPM / skaterCount : 0;
-    // 15/15 at an adjusted average of +30, 0/15 at -5
-    let disciplineScore = Math.min(15, Math.max(0, ((avgPM + 5) / 35) * 15 - pimDed));
+    // 15/15 at an adjusted average of +35, 0/15 at -5
+    let disciplineScore = Math.min(15, Math.max(0, ((avgPM + 5) / 40) * 15 - pimDed));
 
     // — Roster Construction (0–15) —
     let cScore = 0;
