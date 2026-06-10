@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 <title>Nuffy's Chase the Cup</title>
 <style>
   :root {
@@ -81,6 +82,35 @@
 
   body { animation: pageSettle .4s ease-out; }
   @keyframes pageSettle { from { opacity: 0; } to { opacity: 1; } }
+
+  /* ── NHL '94 MODE — Genesis-era retro skin ─────────────────────── */
+  body.nhl94 {
+    --ice: #ffffff;
+    --steel-dark: #003338;
+    --steel-bg: #00565e;
+    --steel-card: #00444b;
+    --red-lamp: #ff4444;
+    --gold-glow: #ffd700;
+  }
+  body.nhl94, body.nhl94 * {
+    font-family: 'VT323', 'Courier New', monospace !important;
+    border-radius: 0 !important;
+    text-shadow: none;
+  }
+  body.nhl94 h1 {
+    color: #ffd700;
+    text-shadow: 3px 3px 0 #002225;
+    letter-spacing: 0.08em;
+  }
+  body.nhl94 .lobby-panel,
+  body.nhl94 .toggle-box {
+    border: 3px solid #00767f !important;
+    box-shadow: 4px 4px 0 rgba(0,0,0,0.45);
+  }
+  body.nhl94 .start-btn {
+    border: 3px solid #ffd700 !important;
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
+  }
 
   .lobby-panel {
     background: var(--steel-card);
@@ -215,6 +245,14 @@
         <div id="difficulty-text" class="mode-status" style="color: var(--pos-f);">Minors</div>
         <div id="difficulty-desc" style="font-size: 11px; color: #6a8ba5; margin-top: 8px; line-height: 1.3;">
           1 skip. Era filter allowed. Projection shows a range, not an exact number.
+        </div>
+      </div>
+
+      <div class="toggle-box" onclick="toggleNHL94()" style="cursor: pointer;">
+        <div class="toggle-label">NHL '94 Mode</div>
+        <div id="nhl94-text" class="mode-status" style="color: #6a8ba5;">OFF</div>
+        <div style="font-size: 11px; color: #6a8ba5; margin-top: 8px; line-height: 1.3;">
+          Retro skin, 8-bit sounds, and only teams from 1994 and earlier. Overrides the era constraint.
         </div>
       </div>
     </div>
@@ -2494,6 +2532,48 @@
   };
 
   // 2. LAUNCHPAD TOGGLES
+  // ── NHL '94 MODE ──────────────────────────────────────────────────
+  function isNHL94() {
+    try { return localStorage.getItem('ncp_nhl94') === '1'; } catch(e) { return false; }
+  }
+  function applyNHL94(on) {
+    document.body.classList.toggle('nhl94', on);
+    let t = document.getElementById('nhl94-text');
+    if (t) { t.textContent = on ? 'ON 🕹️' : 'OFF'; t.style.color = on ? '#ffd700' : '#6a8ba5'; }
+  }
+  function toggleNHL94() {
+    let on = !isNHL94();
+    try { localStorage.setItem('ncp_nhl94', on ? '1' : '0'); } catch(e) {}
+    applyNHL94(on);
+    if (on) sfx94(SFX_PICK);
+  }
+
+  // 8-bit square-wave sound effects, generated in-browser (NHL '94 mode only)
+  let sfxCtx = null;
+  function sfx94(notes) {
+    if (!document.body.classList.contains('nhl94')) return;
+    try {
+      sfxCtx = sfxCtx || new (window.AudioContext || window.webkitAudioContext)();
+      if (sfxCtx.state === 'suspended') sfxCtx.resume();
+      let t = sfxCtx.currentTime;
+      for (let i = 0; i < notes.length; i++) {
+        let o = sfxCtx.createOscillator(), g = sfxCtx.createGain();
+        o.type = 'square';
+        o.frequency.value = notes[i][0];
+        let st = t + notes[i][2], dur = notes[i][1];
+        g.gain.setValueAtTime(0.06, st);
+        g.gain.exponentialRampToValueAtTime(0.001, st + dur);
+        o.connect(g); g.connect(sfxCtx.destination);
+        o.start(st); o.stop(st + dur);
+      }
+    } catch(e) {}
+  }
+  // [frequency Hz, duration s, start offset s]
+  const SFX_SPIN   = [[330,.05,0],[392,.05,.06],[330,.05,.12],[392,.05,.18]];
+  const SFX_PICK   = [[523,.08,0],[659,.08,.09],[784,.15,.18]];
+  const SFX_LEGEND = [[523,.1,0],[659,.1,.11],[784,.1,.22],[1047,.3,.33]];
+  const SFX_JINGLE = [[392,.1,0],[523,.1,.11],[659,.1,.22],[784,.12,.33],[659,.1,.45],[784,.35,.56]];
+
   function toggleEra() {
     if (state.settings.difficultyMode === 'pro') {
       let eraDesc = document.getElementById('era-desc');
@@ -2673,11 +2753,20 @@
 
       let eraYr = parseInt(team.era);
       let isVintage = (!isNaN(eraYr) && eraYr < 1993) || ['1940s','1950s','1960s','1970s','1980s'].includes(team.era);
-      let eraOk = false;
-      if (state.settings.eraMode === 'all') { eraOk = true; }
-      else if (state.settings.eraMode === 'modern') { eraOk = !isVintage; }
-      else if (state.settings.eraMode === 'vintage') { eraOk = isVintage; }
-      if (!eraOk) continue;
+
+      if (isNHL94()) {
+        // NHL '94 mode: only teams from 1994 and earlier, era constraint ignored
+        let is94 = (!isNaN(eraYr) && eraYr <= 1994) || ['1940s','1950s','1960s','1970s','1980s'].includes(team.era);
+        // these two "1990s" rosters are really mid-late 90s teams
+        if (team.era === '1990s' && (team.name === 'Avalanche' || team.name === 'Flyers')) is94 = false;
+        if (!is94) continue;
+      } else {
+        let eraOk = false;
+        if (state.settings.eraMode === 'all') { eraOk = true; }
+        else if (state.settings.eraMode === 'modern') { eraOk = !isVintage; }
+        else if (state.settings.eraMode === 'vintage') { eraOk = isVintage; }
+        if (!eraOk) continue;
+      }
 
       let teamKey = `${team.era}_${team.name}`;
       let recentPos = recentKeys.indexOf(teamKey);
@@ -2702,7 +2791,8 @@
     let displayBox = document.getElementById('blind-display');
     if (!displayBox) { startDraft(); displayBox = document.getElementById('blind-display'); }
     displayBox.classList.add('slot-active');
-    
+    sfx94(SFX_SPIN);
+
     let actionButtons = document.querySelectorAll('.start-btn');
     actionButtons.forEach(btn => { btn.style.pointerEvents = 'none'; btn.style.opacity = '0.3'; });
 
@@ -2944,6 +3034,7 @@
   function executeDraftPick(playerIndex) {
     let team = state.currentTeamDraw;
     let player = team.players[playerIndex];
+    sfx94(player.rank === 'Legend' ? SFX_LEGEND : SFX_PICK);
 
     if (state.settings.difficultyMode !== 'beer_league') {
       let rankKey = player.rank === 'All-Star' ? 'allStar' : player.rank === 'Legend' ? 'legend' : player.rank.toLowerCase();
@@ -3126,6 +3217,7 @@
 
   // 9. RESULTS VIEW
   function renderSimulationReportCard(sc) {
+    sfx94(SFX_JINGLE);
     function bar(label, score, max, note) {
       let pct = Math.round((score/max)*100);
       let col = pct >= 75 ? 'var(--pos-d)' : pct >= 48 ? 'var(--pos-f)' : 'var(--red-lamp)';
@@ -3526,6 +3618,9 @@
         <p style="font-size:10px;color:#2a3f55;text-align:center;margin-top:12px;letter-spacing:.05em;">tap a row to reveal their roster ▾</p>`;
     });
   }
+
+  // Restore NHL '94 mode from previous session (game uses location.reload between drafts)
+  applyNHL94(isNHL94());
 
 </script>
 </body>
