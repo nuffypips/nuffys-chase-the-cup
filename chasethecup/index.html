@@ -112,6 +112,20 @@
     box-shadow: 3px 3px 0 rgba(0,0,0,0.5);
   }
 
+  /* ── ERA RUN THEMES — each decade gets its own period palette ── */
+  body.era70s { --steel-bg:#241a10; --steel-card:#3a2c1c; --steel-dark:#1a1209; --red-lamp:#d96f1f; --gold-glow:#e0b34c; --ice:#f5ead7; }
+  body.era70s .lobby-panel, body.era70s .toggle-box { border-color: rgba(224,179,76,0.25); }
+  body.era80s { --steel-bg:#120d26; --steel-card:#221647; --steel-dark:#0c081c; --red-lamp:#ff2e97; --gold-glow:#27e0e6; --ice:#f1ecff; }
+  body.era80s .lobby-panel, body.era80s .toggle-box { border-color: rgba(39,224,230,0.25); }
+  body.era90s { --steel-bg:#0e1d1b; --steel-card:#1b3531; --steel-dark:#091412; --red-lamp:#b34fc4; --gold-glow:#2ec9a4; --ice:#ecf7f3; }
+  body.era90s .lobby-panel, body.era90s .toggle-box { border-color: rgba(46,201,164,0.25); }
+  body.era00s { --steel-bg:#13171e; --steel-card:#262e3c; --steel-dark:#0d1014; --red-lamp:#3f7fd1; --gold-glow:#b9c4d4; --ice:#eef2f8; }
+  body.era00s .lobby-panel, body.era00s .toggle-box { border-color: rgba(185,196,212,0.25); }
+  body.era10s { --steel-bg:#0e1726; --steel-card:#1c2b44; --steel-dark:#090f1a; --red-lamp:#e8483f; --gold-glow:#f2a93b; --ice:#eaf2fb; }
+  body.era10s .lobby-panel, body.era10s .toggle-box { border-color: rgba(242,169,59,0.25); }
+  body.era20s { --steel-bg:#0b0b12; --steel-card:#161622; --steel-dark:#07070d; --red-lamp:#ff4655; --gold-glow:#00e5b0; --ice:#f2f2f7; }
+  body.era20s .lobby-panel, body.era20s .toggle-box { border-color: rgba(0,229,176,0.25); }
+
   .lobby-panel {
     background: var(--steel-card);
     border: 1px solid rgba(255,255,255,0.08);
@@ -233,7 +247,8 @@
         &bull; New <strong style="color: var(--ice);">RETRO MODE</strong> — 16-bit skin, chiptune sounds, and a team pool straight out of 1994.<br>
         &bull; Scoring engine tightened for realism: <strong style="color: var(--ice);">two-way discipline</strong> is now era-adjusted and pro-rated for shortened seasons, and a cross-era scoring bug was fixed.<br>
         &bull; Front office cleaned up the lobby and put the tip jar where people can find it.<br>
-        &bull; <strong style="color: var(--ice);">Balance patch:</strong> the two-way discipline curve was tightened after GMs cracked it on day one, and five mis-ranked stars (including a certain Core-tier Patrick Roy) were re-tiered to their proper ranks. Scores posted before this patch ran a touch hot.
+        &bull; <strong style="color: var(--ice);">Balance patch:</strong> the two-way discipline curve was tightened after GMs cracked it on day one, and five mis-ranked stars (including a certain Core-tier Patrick Roy) were re-tiered to their proper ranks. Scores posted before this patch ran a touch hot.<br>
+        &bull; <strong style="color: var(--ice);">NEW: ERA RUNS.</strong> Pick a decade — '70s through 2020s — and draft only from it, on Pro rules, with a period-correct look for each era. Every decade keeps its own leaderboard, shown when you post your score. Seven more teams joined to deepen the '70s and '80s pools (148 total).
         <p style="margin-top: 12px; font-size: 11px; color: #4a7a9b;">— League Operations</p>
       </div>
     </div>
@@ -277,6 +292,14 @@
         <div id="nhl94-text" class="mode-status" style="color: #6a8ba5;">OFF</div>
         <div style="font-size: 11px; color: #6a8ba5; margin-top: 8px; line-height: 1.3;">
           16-bit skin, chiptune sounds, and only teams from 1994 and earlier. Overrides the era constraint.
+        </div>
+      </div>
+
+      <div class="toggle-box" onclick="toggleEraRun()" style="cursor: pointer;">
+        <div class="toggle-label">Era Run — Pro</div>
+        <div id="erarun-text" class="mode-status" style="color: #6a8ba5;">OFF</div>
+        <div id="erarun-desc" style="font-size: 11px; color: #6a8ba5; margin-top: 8px; line-height: 1.3;">
+          Pick a decade and draft only from it — Pro rules, period-correct look, and its own leaderboard.
         </div>
       </div>
     </div>
@@ -2627,6 +2650,118 @@
         { name: 'Johan Hedberg',     pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 2,   save: 90.7 },
         { name: 'Jean-Sebastien Aubin',pos:'G', rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 89.0 }
       ]
+    },
+    {
+      era: '1971', name: 'Bruins',
+      players: [
+        { name: 'Bobby Orr',         pos: 'LD', rank: 'Legend',   g: 37, a: 102, pts: 139, pm: 124, pim: 91,  save: 0 },
+        { name: 'Phil Esposito',     pos: 'C',  rank: 'HOF',      g: 76, a: 76,  pts: 152, pm: 71,  pim: 71,  save: 0 },
+        { name: 'Johnny Bucyk',      pos: 'LW', rank: 'HOF',      g: 51, a: 65,  pts: 116, pm: 50,  pim: 8,   save: 0 },
+        { name: 'Ken Hodge',         pos: 'RW', rank: 'All-Star', g: 43, a: 62,  pts: 105, pm: 45,  pim: 113, save: 0 },
+        { name: 'Wayne Cashman',     pos: 'LW', rank: 'Core',     g: 21, a: 58,  pts: 79,  pm: 42,  pim: 100, save: 0 },
+        { name: 'John McKenzie',     pos: 'RW', rank: 'Core',     g: 31, a: 46,  pts: 77,  pm: 38,  pim: 120, save: 0 },
+        { name: 'Fred Stanfield',    pos: 'C',  rank: 'Core',     g: 24, a: 52,  pts: 76,  pm: 30,  pim: 12,  save: 0 },
+        { name: 'Dallas Smith',      pos: 'LD', rank: 'Core',     g: 7,  a: 38,  pts: 45,  pm: 60,  pim: 70,  save: 0 },
+        { name: 'Ted Green',         pos: 'RD', rank: 'Core',     g: 5,  a: 37,  pts: 42,  pm: 30,  pim: 60,  save: 0 },
+        { name: 'Gerry Cheevers',    pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 4,   save: 90.1 },
+        { name: 'Eddie Johnston',    pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 89.6 }
+      ]
+    },
+    {
+      era: '1971', name: 'Blackhawks',
+      players: [
+        { name: 'Bobby Hull',        pos: 'LW', rank: 'Legend',   g: 44, a: 52,  pts: 96,  pm: 38,  pim: 32,  save: 0 },
+        { name: 'Stan Mikita',       pos: 'C',  rank: 'HOF',      g: 24, a: 48,  pts: 72,  pm: 30,  pim: 85,  save: 0 },
+        { name: 'Dennis Hull',       pos: 'LW', rank: 'All-Star', g: 40, a: 26,  pts: 66,  pm: 22,  pim: 16,  save: 0 },
+        { name: 'Pit Martin',        pos: 'C',  rank: 'Core',     g: 22, a: 33,  pts: 55,  pm: 18,  pim: 40,  save: 0 },
+        { name: 'Cliff Koroll',      pos: 'RW', rank: 'Core',     g: 17, a: 21,  pts: 38,  pm: 16,  pim: 23,  save: 0 },
+        { name: 'Jim Pappin',        pos: 'RW', rank: 'Core',     g: 22, a: 23,  pts: 45,  pm: 14,  pim: 34,  save: 0 },
+        { name: 'Pat Stapleton',     pos: 'LD', rank: 'All-Star', g: 7,  a: 44,  pts: 51,  pm: 28,  pim: 24,  save: 0 },
+        { name: 'Bill White',        pos: 'RD', rank: 'All-Star', g: 5,  a: 21,  pts: 26,  pm: 26,  pim: 56,  save: 0 },
+        { name: 'Keith Magnuson',    pos: 'LD', rank: 'Core',     g: 3,  a: 20,  pts: 23,  pm: 20,  pim: 291, save: 0 },
+        { name: 'Tony Esposito',     pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 2,   save: 92.2 },
+        { name: 'Gerry Desjardins',  pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 88.8 }
+      ]
+    },
+    {
+      era: '1978', name: 'Maple Leafs',
+      players: [
+        { name: 'Darryl Sittler',    pos: 'C',  rank: 'HOF',      g: 45, a: 72,  pts: 117, pm: 30,  pim: 100, save: 0 },
+        { name: 'Lanny McDonald',    pos: 'RW', rank: 'HOF',      g: 47, a: 40,  pts: 87,  pm: 28,  pim: 54,  save: 0 },
+        { name: 'Borje Salming',     pos: 'LD', rank: 'HOF',      g: 16, a: 60,  pts: 76,  pm: 33,  pim: 70,  save: 0 },
+        { name: 'Ian Turnbull',      pos: 'RD', rank: 'All-Star', g: 14, a: 47,  pts: 61,  pm: 22,  pim: 77,  save: 0 },
+        { name: 'Tiger Williams',    pos: 'LW', rank: 'Core',     g: 19, a: 31,  pts: 50,  pm: 12,  pim: 351, save: 0 },
+        { name: 'Ron Ellis',         pos: 'RW', rank: 'Core',     g: 26, a: 24,  pts: 50,  pm: 16,  pim: 17,  save: 0 },
+        { name: 'George Ferguson',   pos: 'C',  rank: 'Core',     g: 7,  a: 16,  pts: 23,  pm: 6,   pim: 37,  save: 0 },
+        { name: 'Pat Boutette',      pos: 'LW', rank: 'Core',     g: 17, a: 19,  pts: 36,  pm: 10,  pim: 120, save: 0 },
+        { name: 'Brian Glennie',     pos: 'RD', rank: 'Core',     g: 1,  a: 12,  pts: 13,  pm: 14,  pim: 86,  save: 0 },
+        { name: 'Mike Palmateer',    pos: 'G',  rank: 'All-Star', g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 6,   save: 90.2 },
+        { name: 'Gord McRae',        pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 88.0 }
+      ]
+    },
+    {
+      era: '1979', name: 'Rangers',
+      players: [
+        { name: 'Phil Esposito',     pos: 'C',  rank: 'HOF',      g: 42, a: 36,  pts: 78,  pm: 12,  pim: 37,  save: 0 },
+        { name: 'Anders Hedberg',    pos: 'RW', rank: 'All-Star', g: 33, a: 45,  pts: 78,  pm: 18,  pim: 33,  save: 0 },
+        { name: 'Ulf Nilsson',       pos: 'C',  rank: 'All-Star', g: 27, a: 39,  pts: 66,  pm: 16,  pim: 21,  save: 0 },
+        { name: 'Ron Duguay',        pos: 'C',  rank: 'Core',     g: 27, a: 36,  pts: 63,  pm: 14,  pim: 35,  save: 0 },
+        { name: 'Steve Vickers',     pos: 'LW', rank: 'Core',     g: 19, a: 30,  pts: 49,  pm: 10,  pim: 20,  save: 0 },
+        { name: 'Don Murdoch',       pos: 'RW', rank: 'Core',     g: 15, a: 23,  pts: 38,  pm: 8,   pim: 18,  save: 0 },
+        { name: 'Ron Greschner',     pos: 'LD', rank: 'All-Star', g: 17, a: 36,  pts: 53,  pm: 20,  pim: 66,  save: 0 },
+        { name: 'Dave Maloney',      pos: 'RD', rank: 'Core',     g: 5,  a: 17,  pts: 22,  pm: 12,  pim: 151, save: 0 },
+        { name: 'Carol Vadnais',     pos: 'LD', rank: 'Core',     g: 7,  a: 22,  pts: 29,  pm: 10,  pim: 86,  save: 0 },
+        { name: 'John Davidson',     pos: 'G',  rank: 'All-Star', g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 4,   save: 88.4 },
+        { name: 'Wayne Thomas',      pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 0,   save: 87.8 }
+      ]
+    },
+    {
+      era: '1983', name: 'Islanders',
+      players: [
+        { name: 'Mike Bossy',        pos: 'RW', rank: 'Legend',   g: 60, a: 58,  pts: 118, pm: 27,  pim: 20,  save: 0 },
+        { name: 'Bryan Trottier',    pos: 'C',  rank: 'HOF',      g: 34, a: 55,  pts: 89,  pm: 31,  pim: 68,  save: 0 },
+        { name: 'Denis Potvin',      pos: 'LD', rank: 'HOF',      g: 12, a: 44,  pts: 56,  pm: 26,  pim: 60,  save: 0 },
+        { name: 'John Tonelli',      pos: 'LW', rank: 'All-Star', g: 31, a: 40,  pts: 71,  pm: 22,  pim: 55,  save: 0 },
+        { name: 'Bob Bourne',        pos: 'LW', rank: 'Core',     g: 20, a: 42,  pts: 62,  pm: 18,  pim: 26,  save: 0 },
+        { name: 'Clark Gillies',     pos: 'LW', rank: 'Core',     g: 21, a: 20,  pts: 41,  pm: 12,  pim: 76,  save: 0 },
+        { name: 'Duane Sutter',      pos: 'RW', rank: 'Core',     g: 13, a: 19,  pts: 32,  pm: 10,  pim: 118, save: 0 },
+        { name: 'Tomas Jonsson',     pos: 'LD', rank: 'Core',     g: 13, a: 35,  pts: 48,  pm: 16,  pim: 50,  save: 0 },
+        { name: 'Ken Morrow',        pos: 'RD', rank: 'Core',     g: 5,  a: 11,  pts: 16,  pm: 14,  pim: 44,  save: 0 },
+        { name: 'Billy Smith',       pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 18,  save: 90.6 },
+        { name: 'Roland Melanson',   pos: 'G',  rank: 'All-Star', g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 4,   save: 90.3 }
+      ]
+    },
+    {
+      era: '1985', name: 'Flyers',
+      players: [
+        { name: 'Pelle Lindbergh',   pos: 'G',  rank: 'HOF',      g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 6,   save: 89.9 },
+        { name: 'Tim Kerr',          pos: 'RW', rank: 'All-Star', g: 54, a: 44,  pts: 98,  pm: 24,  pim: 57,  save: 0 },
+        { name: 'Brian Propp',       pos: 'LW', rank: 'All-Star', g: 43, a: 53,  pts: 96,  pm: 30,  pim: 43,  save: 0 },
+        { name: 'Dave Poulin',       pos: 'C',  rank: 'All-Star', g: 30, a: 44,  pts: 74,  pm: 28,  pim: 59,  save: 0 },
+        { name: 'Mark Howe',         pos: 'LD', rank: 'HOF',      g: 18, a: 39,  pts: 57,  pm: 51,  pim: 31,  save: 0 },
+        { name: 'Ilkka Sinisalo',    pos: 'LW', rank: 'Core',     g: 36, a: 37,  pts: 73,  pm: 20,  pim: 16,  save: 0 },
+        { name: 'Rick Tocchet',      pos: 'RW', rank: 'Core',     g: 14, a: 25,  pts: 39,  pm: 8,   pim: 181, save: 0 },
+        { name: 'Derrick Smith',     pos: 'LW', rank: 'Core',     g: 17, a: 22,  pts: 39,  pm: 12,  pim: 31,  save: 0 },
+        { name: 'Brad McCrimmon',    pos: 'RD', rank: 'Core',     g: 8,  a: 35,  pts: 43,  pm: 30,  pim: 81,  save: 0 },
+        { name: 'Doug Crossman',     pos: 'LD', rank: 'Core',     g: 4,  a: 33,  pts: 37,  pm: 16,  pim: 27,  save: 0 },
+        { name: 'Bob Froese',        pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 2,   save: 90.0 }
+      ]
+    },
+    {
+      era: '1986', name: 'Flames',
+      players: [
+        { name: 'Joe Mullen',        pos: 'RW', rank: 'All-Star', g: 44, a: 47,  pts: 91,  pm: 20,  pim: 11,  save: 0 },
+        { name: 'Al MacInnis',       pos: 'RD', rank: 'HOF',      g: 11, a: 34,  pts: 45,  pm: 16,  pim: 43,  save: 0 },
+        { name: 'Gary Suter',        pos: 'LD', rank: 'All-Star', g: 18, a: 50,  pts: 68,  pm: 14,  pim: 141, save: 0 },
+        { name: 'Hakan Loob',        pos: 'RW', rank: 'All-Star', g: 31, a: 36,  pts: 67,  pm: 18,  pim: 36,  save: 0 },
+        { name: 'Dan Quinn',         pos: 'C',  rank: 'Core',     g: 20, a: 38,  pts: 58,  pm: 8,   pim: 22,  save: 0 },
+        { name: 'Lanny McDonald',    pos: 'RW', rank: 'Core',     g: 28, a: 43,  pts: 71,  pm: 10,  pim: 44,  save: 0 },
+        { name: 'Jim Peplinski',     pos: 'LW', rank: 'Core',     g: 24, a: 35,  pts: 59,  pm: 12,  pim: 214, save: 0 },
+        { name: 'Doug Risebrough',   pos: 'C',  rank: 'Core',     g: 15, a: 28,  pts: 43,  pm: 10,  pim: 129, save: 0 },
+        { name: 'Paul Reinhart',     pos: 'LD', rank: 'Core',     g: 8,  a: 25,  pts: 33,  pm: 9,   pim: 15,  save: 0 },
+        { name: 'Mike Vernon',       pos: 'G',  rank: 'All-Star', g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 4,   save: 89.0 },
+        { name: 'Rejean Lemelin',    pos: 'G',  rank: 'Core',     g: 0,  a: 0,   pts: 0,   pm: 0,   pim: 2,   save: 88.5 }
+      ]
     }
   ];
 
@@ -2635,7 +2770,8 @@
     phase: 'lobby', 
     settings: {
       eraMode: 'all',
-      difficultyMode: 'minors'
+      difficultyMode: 'minors',
+      eraRun: null
     },
     skipsUsed: 0,
     maxSkipsAllowed: 1,
@@ -2668,7 +2804,7 @@
   // 2. LAUNCHPAD TOGGLES
   // ── PATCH NOTES EMAIL ─────────────────────────────────────────────
   // Bump this when the patch-notes email content changes so the NEW badge reappears
-  const PATCH_VERSION = '2026-06-10c';
+  const PATCH_VERSION = '2026-06-11';
   function markPatchSeenUI() {
     let d = document.getElementById('patch-dot'); if (d) d.style.background = '#2a3f55';
     let n = document.getElementById('patch-new'); if (n) n.style.display = 'none';
@@ -2700,6 +2836,68 @@
     if (on) sfx94(SFX_PICK);
   }
 
+  // ── ERA RUN — pro-rules decade challenge with its own theme + leaderboard ──
+  const ERA_RUNS = {
+    era70s: { label: "'70s RUN",  lo: 1970, hi: 1979, generics: ['1970s'],
+              vibe: "Firewagon hockey. Flow, fists, and no helmets." },
+    era80s: { label: "'80s RUN",  lo: 1980, hi: 1989, generics: ['1980s'],
+              vibe: "Run-and-gun. Dynasties, mullets, and 8-goal games." },
+    era90s: { label: "'90s RUN",  lo: 1990, hi: 1999, generics: ['1990s','1995'],
+              vibe: "Clutch-and-grab. Big trades, bigger goalies." },
+    era00s: { label: "2000s RUN", lo: 2000, hi: 2009, generics: ['2000s'],
+              vibe: "Dead puck era. Every goal is earned." },
+    era10s: { label: "2010s RUN", lo: 2010, hi: 2019, generics: ['2010s'],
+              vibe: "Speed and analytics. Possession is king." },
+    era20s: { label: "2020s RUN", lo: 2020, hi: 2099, generics: [],
+              vibe: "The skill era. Young guns and cap gymnastics." }
+  };
+  const ERA_RUN_ORDER = [null, 'era70s', 'era80s', 'era90s', 'era00s', 'era10s', 'era20s'];
+
+  function teamInEraRun(team, runKey) {
+    let def = ERA_RUNS[runKey];
+    if (!def) return true;
+    if (def.generics.includes(team.era)) return true;
+    let yr = parseInt(team.era);
+    return !isNaN(yr) && yr >= def.lo && yr <= def.hi;
+  }
+
+  function applyEraRunTheme(runKey) {
+    Object.keys(ERA_RUNS).forEach(k => document.body.classList.remove(k));
+    if (runKey) document.body.classList.add(runKey);
+  }
+
+  function toggleEraRun() {
+    let cur  = state.settings.eraRun;
+    let next = ERA_RUN_ORDER[(ERA_RUN_ORDER.indexOf(cur) + 1) % ERA_RUN_ORDER.length];
+    state.settings.eraRun = next;
+    applyEraRunTheme(next);
+
+    let label = document.getElementById('erarun-text');
+    let desc  = document.getElementById('erarun-desc');
+    let diffLabel = document.getElementById('difficulty-text');
+    let diffDesc  = document.getElementById('difficulty-desc');
+
+    if (next) {
+      // Era runs are always Pro rules
+      state.settings.difficultyMode = 'pro';
+      state.maxSkipsAllowed = 0;
+      state.settings.eraMode = 'all';
+      label.textContent = ERA_RUNS[next].label;
+      label.style.color = 'var(--gold-glow)';
+      desc.textContent  = ERA_RUNS[next].vibe + " Pro rules — no skips, strict slots. Separate leaderboard.";
+      if (diffLabel) { diffLabel.textContent = 'Pro League (Era Run)'; diffLabel.style.color = 'var(--red-lamp)'; }
+      if (diffDesc)  { diffDesc.textContent  = 'Locked — Era Runs are always played on Pro rules.'; }
+    } else {
+      state.settings.difficultyMode = 'minors';
+      state.maxSkipsAllowed = 1;
+      label.textContent = 'OFF';
+      label.style.color = '#6a8ba5';
+      desc.textContent  = 'Pick a decade and draft only from it — Pro rules, period-correct look, and its own leaderboard.';
+      if (diffLabel) { diffLabel.textContent = 'Minors'; diffLabel.style.color = 'var(--pos-f)'; }
+      if (diffDesc)  { diffDesc.textContent  = '1 skip. Era filter allowed. Projection shows a range, not an exact number.'; }
+    }
+  }
+
   // 8-bit square-wave sound effects, generated in-browser (NHL '94 mode only)
   let sfxCtx = null;
   function sfx94(notes) {
@@ -2727,6 +2925,13 @@
   const SFX_JINGLE = [[392,.1,0],[523,.1,.11],[659,.1,.22],[784,.12,.33],[659,.1,.45],[784,.35,.56]];
 
   function toggleEra() {
+    if (state.settings.eraRun) {
+      let eraDesc = document.getElementById('era-desc');
+      eraDesc.textContent = "Era Run controls the pool — turn it off to use the era filter.";
+      eraDesc.style.color = 'var(--red-lamp)';
+      setTimeout(() => { eraDesc.style.color = '#6a8ba5'; }, 2000);
+      return;
+    }
     if (state.settings.difficultyMode === 'pro') {
       let eraDesc = document.getElementById('era-desc');
       eraDesc.textContent = "Era filter is locked in Pro League — you take what the lottery gives you.";
@@ -2759,6 +2964,15 @@
   }
 
   function toggleDifficulty() {
+    if (state.settings.eraRun) {
+      let dd = document.getElementById('difficulty-desc');
+      if (dd) {
+        dd.textContent = 'Locked — turn off Era Run to change difficulty.';
+        dd.style.color = 'var(--red-lamp)';
+        setTimeout(() => { dd.textContent = 'Locked — Era Runs are always played on Pro rules.'; dd.style.color = '#6a8ba5'; }, 2000);
+      }
+      return;
+    }
     let diffLabel = document.getElementById('difficulty-text');
     let diffDesc  = document.getElementById('difficulty-desc');
     let eraBox    = document.getElementById('era-toggle-box');
@@ -2906,7 +3120,10 @@
       let eraYr = parseInt(team.era);
       let isVintage = (!isNaN(eraYr) && eraYr < 1993) || ['1940s','1950s','1960s','1970s','1980s'].includes(team.era);
 
-      if (isNHL94()) {
+      if (state.settings.eraRun) {
+        // Era Run: only teams from the chosen decade, overrides everything else
+        if (!teamInEraRun(team, state.settings.eraRun)) continue;
+      } else if (isNHL94()) {
         // NHL '94 mode: only teams from 1994 and earlier, era constraint ignored
         let is94 = (!isNaN(eraYr) && eraYr <= 1994) || ['1940s','1950s','1960s','1970s','1980s'].includes(team.era);
         // these two "1990s" rosters are really mid-late 90s teams
@@ -3575,6 +3792,8 @@
         ? { name: p.name, pos: p.pos, rank: p.rank, era: p.era, team: p.team }
         : null;
     });
+    // Era Runs post to their own board — tagged inside the roster jsonb
+    if (state.settings.eraRun) rosterData.mode = state.settings.eraRun;
 
     try {
       let res = await fetch(`${SUPABASE_URL}/rest/v1/Leaderboard`, {
@@ -3601,12 +3820,14 @@
   }
 
   // GET the top 10 scores — includes full roster jsonb so we can show it on click
-  async function supabaseFetchLeaderboard(limit = 10) {
+  // mode: null = main board (excludes era runs), or an ERA_RUNS key for that board
+  async function supabaseFetchLeaderboard(limit = 10, mode = null) {
     try {
       let url = `${SUPABASE_URL}/rest/v1/Leaderboard`
               + `?select=Name,Score,Roster`
               + `&order=Score.desc`
-              + `&limit=${limit}`;
+              + `&limit=${limit}`
+              + (mode ? `&Roster->>mode=eq.${mode}` : `&Roster->>mode=is.null`);
 
       let res = await fetch(url, {
         headers: {
@@ -3634,11 +3855,17 @@
 
     let result = await supabaseSubmitScore(username);
     if (result.ok) {
+      let runTag = state.settings.eraRun && ERA_RUNS[state.settings.eraRun]
+        ? ERA_RUNS[state.settings.eraRun].label
+        : state.settings.difficultyMode.replace('_',' ').toUpperCase();
       document.getElementById('submit-zone').innerHTML = `
         <div style="text-align:center;padding:8px 0;">
           <div style="font-family:'Impact',sans-serif;font-size:18px;color:var(--pos-d);letter-spacing:.05em;">✓ Score posted, ${username}!</div>
-          <div style="font-size:12px;color:#6a8ba5;margin-top:4px;">${Math.round(state.scoreResult.overallScore)} pts — ${state.settings.difficultyMode.replace('_',' ').toUpperCase()}</div>
+          <div style="font-size:12px;color:#6a8ba5;margin-top:4px;">${Math.round(state.scoreResult.overallScore)} pts — ${runTag}</div>
+          ${state.settings.eraRun ? '<div style="font-size:11px;color:#4a6a84;margin-top:6px;">Loading the era board…</div>' : ''}
         </div>`;
+      // Era Runs get their own board, shown right after posting
+      if (state.settings.eraRun) setTimeout(() => renderLeaderboard(state.settings.eraRun), 1600);
     } else {
       btn.disabled    = false;
       btn.textContent = 'POST SCORE';
@@ -3690,14 +3917,16 @@
     anchor.parentNode.insertBefore(detailTr, anchor.nextSibling);
   }
 
-  function renderLeaderboard() {
+  function renderLeaderboard(mode = null) {
     // Roster data lives here so lbToggleRoster can reach it without inline JSON
     window.lbRosters = {};
+
+    let boardTitle = mode && ERA_RUNS[mode] ? `🏒 ${ERA_RUNS[mode].label} BOARD` : '🏒 LEADERBOARD';
 
     document.getElementById('app').innerHTML = `
       <div class="lobby-panel" style="animation:fadeUp .35s ease-out;max-width:680px;margin:0 auto;">
         <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;">
-          <h2 style="font-family:'Impact',sans-serif;font-size:28px;letter-spacing:.05em;margin:0;">🏒 LEADERBOARD</h2>
+          <h2 style="font-family:'Impact',sans-serif;font-size:28px;letter-spacing:.05em;margin:0;">${boardTitle}</h2>
           <button onclick="location.reload()" class="start-btn"
             style="padding:8px 16px;font-size:12px;margin:0;background:transparent;border:2px solid #2a3f55;color:#6a8ba5;box-shadow:none;">← BACK</button>
         </div>
@@ -3723,7 +3952,7 @@
       </div>`;
 
     // Fetch and render immediately
-    supabaseFetchLeaderboard(10).then(rows => {
+    supabaseFetchLeaderboard(10, mode).then(rows => {
       if (rows === null) {
         document.getElementById('lb-body').innerHTML = `
           <div style="text-align:center;padding:30px;color:var(--red-lamp);">
